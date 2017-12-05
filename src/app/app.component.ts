@@ -1,4 +1,7 @@
+import { UsersService } from './services/users.service';
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  constructor(
+    private auth: AuthService, 
+    private userService: UsersService, 
+    private router: Router
+  ) {
+
+    // we are doing auth check when user log in here also the 
+    // returnUrl redirection due to a bug, check authService
+    this.auth.user$.subscribe(user => {
+      if (!user) return;
+      
+      // store user in db, since we are using 3rd party (google) for
+      // user info, we will always save their data on log in since they
+      // may change it without the knowledge of this app
+      // if we had a registration form, we would check if its a new user and
+      // then save the data in db
+      this.userService.save(user);
+      
+      // redirect somewhere
+      const returnUrl = localStorage.getItem("returnUrl") || "/";
+      this.router.navigate([returnUrl]);
+    });
+  }
 }

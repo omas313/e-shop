@@ -14,37 +14,39 @@
       </li>
       
       <!-- Logged in or not  -->
-      <div *ngIf="isLoggedIn; then logged else notlogged"></div>
-      <ng-template #logged>
-        <li class="nav-item" dropdown>
-          <a class="nav-link dropdown-toggle" dropdownToggle>Username</a>
-          <ul *dropdownMenu class="dropdown-menu left-auto">
-            <li class="nav-item" routerLinkActive="reactive-forms/1">
-              <a class="nav-link" [routerLink]="['/reactive-forms/1']">
-                My Orders
-              </a>
-            </li>
-            <li class="nav-item" routerLinkActive="reactive-forms/2">
-              <a class="nav-link" [routerLink]="['/reactive-forms/2']">
+      <li class="nav-item" dropdown *ngIf="appUser; else notlogged">
+        <a class="nav-link dropdown-toggle" dropdownToggle>
+          {{ appUser.name }}
+        </a>
+        <ul *dropdownMenu class="dropdown-menu left-auto">
+          <li class="nav-item" routerLinkActive="my-orders">
+            <a class="nav-link" [routerLink]="['/my-orders']">
+              My Orders
+            </a>
+          </li>
+           <!-- admin links -->
+          <ng-container *ngIf="appUser.isAdmin">
+            <li class="nav-item" routerLinkActive="admin/orders">
+              <a class="nav-link" [routerLink]="['/admin/orders']">
                 Manage Orders
               </a>
             </li>
-            <li class="nav-item" routerLinkActive="reactive-forms/3">
-              <a class="nav-link" [routerLink]="['/reactive-forms/3']">
+            <li class="nav-item" routerLinkActive="admin/products">
+              <a class="nav-link" [routerLink]="['/admin/products']">
                 Manage Products
               </a>
             </li>
-            <li class="nav-item" routerLinkActive="reactive-forms/4">
-              <a class="nav-link" [routerLink]="['/reactive-forms/4']">
-                Log Out
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ng-template>
+          </ng-container>
+          <li class="nav-item" (click)="logout()">
+            <a class="nav-link">
+              Log Out
+            </a>
+          </li>
+        </ul>
+      </li>
       <ng-template #notlogged>
-        <li class="nav-item" routerLinkActive="zzz">
-          <a class="nav-link" [routerLink]="['/zzz']">
+        <li class="nav-item" routerLinkActive="login">
+          <a class="nav-link" [routerLink]="['/login']">
             Log In
           </a>
         </li>
