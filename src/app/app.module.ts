@@ -9,6 +9,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { RouterModule } from '@angular/router';
 import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
+// import { DataTableModule } from 'angular-4-data-table/src/index';
+import { CustomFormsModule } from 'ng2-validation';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -25,6 +27,10 @@ import { AdminProductsComponent } from './components/admin/admin-products/admin-
 import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminProductFormComponent } from './components/admin/admin-product-form/admin-product-form.component';
+import { CategoryService } from './services/category.service';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +45,8 @@ import { AuthGuard } from './guards/auth.guard';
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    AdminProductFormComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -49,12 +56,18 @@ import { AuthGuard } from './guards/auth.guard';
     RouterModule.forRoot(routes),
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
+    FormsModule,
+    CustomFormsModule,
+    ReactiveFormsModule,
+    // DataTableModule
   ],
   providers: [
     AuthService,
     UsersService,
+    ProductService,
     AdminGuard,
-    AuthGuard
+    AuthGuard,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })

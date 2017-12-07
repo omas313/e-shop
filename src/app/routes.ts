@@ -10,6 +10,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
+import { AdminProductFormComponent } from './components/admin/admin-product-form/admin-product-form.component';
 
 export const routes = [
   {
@@ -54,6 +55,18 @@ export const routes = [
   {
     path: 'admin/products', 
     component: AdminProductsComponent, 
+    canActivate: [AuthGuard, AdminGuard],
+    pathMatch: 'full'
+  },
+  {
+    path: 'admin/products/new', 
+    component: AdminProductFormComponent, 
+    canActivate: [AuthGuard, AdminGuard],
+    pathMatch: 'full'
+  },
+  {
+    path: 'admin/products/:id', 
+    component: AdminProductFormComponent, 
     canActivate: [AuthGuard, AdminGuard],
     pathMatch: 'full'
   },

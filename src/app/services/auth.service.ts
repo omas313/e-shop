@@ -11,7 +11,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Injectable()
 export class AuthService {
 
-  // user: User;
   user$: Observable<firebase.User>;
 
   constructor(
@@ -45,7 +44,7 @@ export class AuthService {
     // or when we go to log in page directly
 
     // if we redirected user to log in, store redirectUrl 
-    const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl") || "/";
+    const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl") || "";
     localStorage.setItem("returnUrl", returnUrl);
 
     this.afAuth.auth

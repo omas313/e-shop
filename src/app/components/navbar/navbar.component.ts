@@ -1,7 +1,7 @@
-import { AppUser } from '../../models/app-user';
 import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppUser } from '../../models/app-user';
 
 @Component({
   selector: 'app-navbar',

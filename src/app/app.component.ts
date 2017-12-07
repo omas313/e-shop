@@ -27,8 +27,12 @@ export class AppComponent {
       // then save the data in db
       this.userService.save(user);
       
-      // redirect somewhere
-      const returnUrl = localStorage.getItem("returnUrl") || "/";
+      // check for redirect url
+      const returnUrl = localStorage.getItem("returnUrl");
+      if (returnUrl) return;
+      
+      // redirect somewhere then get rid of redirect url
+      localStorage.removeItem("returnUrl");
       this.router.navigate([returnUrl]);
     });
   }
