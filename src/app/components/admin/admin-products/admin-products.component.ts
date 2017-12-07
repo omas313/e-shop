@@ -2,7 +2,6 @@ import { Product } from './../../../models/product';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DataTableResource } from 'angular-4-data-table/src/index';
 import { Observable } from 'rxjs/Observable';
 import { ProductService } from '../../../services/product.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -20,10 +19,10 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   products: Product[];
   filteredProducts: Product[];
+
+  titleSortAsc = false;
+  priceSortAsc = false;
   
-  // itemResource = new DataTableResource(this.products);
-  // items = [];
-  // itemCount = 0;
   constructor(
     private router: Router,
     private productService: ProductService
@@ -49,22 +48,28 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
         : this.products;
   }
 
-
-  // data table
-  // reloadItems(params) {
-  //   this.itemResource.query(params).then(items => this.items = items);
-  // }
-
-  // // special properties:
-  // rowClick(rowEvent) {
-  //   console.log('Clicked: ' + rowEvent.row.item.title);
-  // }
-
-  // rowDoubleClick(rowEvent) {
-  //   console.log('Double clicked: ' + rowEvent.row.item.title);
-  // }
-
-  // rowTooltip(item) { return item.price; }
+  sortByTitle() {
+    // switch sort type before sorting to display correct caret
+    this.titleSortAsc = !this.titleSortAsc;    
+    this.filteredProducts = this.filteredProducts
+    .sort((p1, p2) => {
+      // get lower cased titles
+      const t1 = p1.title.toLowerCase();
+      const t2 = p2.title.toLowerCase();
+      // sort string ascending
+      if (t1 < t2) return this.titleSortAsc ? -1 : 1;
+        if (t1 > t2) return this.titleSortAsc ? 1 : -1;
+        // no sorting
+        return 0;
+      });
+  }
+  
+  sortByPrice() {
+    // switch sort type before sorting to display correct caret
+    this.priceSortAsc = !this.priceSortAsc;
+    this.filteredProducts = this.filteredProducts
+      .sort((p1, p2) => this.priceSortAsc ? p1.price - p2.price : p2.price - p1.price);
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

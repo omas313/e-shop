@@ -29,7 +29,7 @@ export class AppComponent {
       
       // check for redirect url
       const returnUrl = localStorage.getItem("returnUrl");
-      if (returnUrl) return;
+      if (!returnUrl) return;
       
       // redirect somewhere then get rid of redirect url
       localStorage.removeItem("returnUrl");

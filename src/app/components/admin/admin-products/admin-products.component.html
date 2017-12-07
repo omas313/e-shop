@@ -10,11 +10,21 @@
     (keyup)="filter(search)">
 </div>
 
+<!-- <div>
+  title asc: {{ titleSortAsc }} 
+  <br>
+  price asc: {{ priceSortAsc }}
+</div> -->
+
 <table class="table">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Price</th>
+      <th (click)="sortByTitle()">
+        Title
+      </th>
+      <th (click)="sortByPrice()">
+        Price
+      </th>
       <th></th>
     </tr>
   </thead>

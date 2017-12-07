@@ -9,7 +9,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { RouterModule } from '@angular/router';
 import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
-// import { DataTableModule } from 'angular-4-data-table/src/index';
 import { CustomFormsModule } from 'ng2-validation';
 
 import { AppComponent } from './app.component';
@@ -59,7 +58,6 @@ import { ProductService } from './services/product.service';
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
-    // DataTableModule
   ],
   providers: [
     AuthService,
@@ -67,7 +65,7 @@ import { ProductService } from './services/product.service';
     ProductService,
     AdminGuard,
     AuthGuard,
-    CategoryService
+    CategoryService,
   ],
   bootstrap: [AppComponent]
 })

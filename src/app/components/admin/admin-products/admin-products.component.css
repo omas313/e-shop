@@ -1,0 +1,17 @@
+
+table td, table th{
+  border-color: #c7defd;
+}
+
+table thead th:hover {
+  background: #fdffff;
+}
+
+table tr:nth-child(odd) {
+  background: #f4f9fe;
+}
+
+table thead th {
+  cursor: pointer;
+  background-color: #d0e1f9;
+}
