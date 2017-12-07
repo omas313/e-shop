@@ -1,5 +1,12 @@
 
-table td, table th{
+table {
+  -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.1);
+  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.1);
+}
+
+table td, 
+table th{
   border-color: #c7defd;
 }
 
@@ -11,7 +18,39 @@ table tr:nth-child(odd) {
   background: #f4f9fe;
 }
 
+table tr:hover {
+  background: #d0e1f9;
+}
+
 table thead th {
   cursor: pointer;
-  background-color: #d0e1f9;
+  background-color: #e8f4fd;
+}
+
+td a,
+td a:hover {
+  color: #4d648d;
+}
+
+input[type='number'] {
+  width: 70px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.m0 {
+  margin: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.grid-centered {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-self: center;
+  justify-items: center;
 }

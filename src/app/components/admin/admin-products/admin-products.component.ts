@@ -19,17 +19,27 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   products: Product[];
   filteredProducts: Product[];
-
+  
+  // sorting flags
   titleSortAsc = false;
   priceSortAsc = false;
+
+  // pagination stuff
+  pageLimit = 8;
+  currentPage = 1;
+  numPages = 1;
+  paginatedIndices = [];
+  
   
   constructor(
     private router: Router,
     private productService: ProductService
   ) {
     this.subscription = this.productService.getProducts()
-      .subscribe(products => this.filteredProducts = this.products = products);
-    // this.itemResource.count().then(count => this.itemCount = count);
+      .subscribe(products => {
+        this.filteredProducts = this.products = products;
+        this.changePage(1);
+      });
   }
 
   ngOnInit() {
@@ -46,6 +56,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
       search.value ? this.products.filter(p => 
           p.title.toLowerCase().indexOf(search.value.toLowerCase()) !== -1)
         : this.products;
+    this.changePage(1);
   }
 
   sortByTitle() {
@@ -71,7 +82,40 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
       .sort((p1, p2) => this.priceSortAsc ? p1.price - p2.price : p2.price - p1.price);
   }
 
+  changePage(newPage: number) {
+    // update number of total pages since we may have filtered
+    this.numPages = Math.ceil(this.filteredProducts.length / this.pageLimit);
+    
+    if (newPage < 1) {
+      console.log("Error: trying to set page < 1. Value obtained: ", newPage);
+      newPage = 1;
+    }
+    if (newPage > this.numPages) {
+      console.log("Error: trying to set page > total numPages. Value obtained: ", newPage);
+      newPage = this.numPages;
+    }
+
+    // update current page
+    this.currentPage = newPage;
+    
+    // calculate start and end indices based on pageLimit & numPages
+    const start = this.pageLimit * (this.currentPage - 1);
+    // if this is the last page, end at last index, else add in to the limit - 1 since first is included
+    const end = this.numPages === this.currentPage ? 
+      this.filteredProducts.length - 1 : start + this.pageLimit - 1;
+
+    // fill the indices array which we will use to display 
+    this.paginatedIndices = [];
+    for (let i = start; i <= end; i++) 
+      this.paginatedIndices.push(i);
+
+    // console.log(this.currentPage);
+    // console.log(this.paginatedIndices);
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
+  log() { console.log("sadfas"); }
 }
