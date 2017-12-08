@@ -35,7 +35,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     private router: Router,
     private productService: ProductService
   ) {
-    this.subscription = this.productService.getProducts()
+    this.subscription = this.productService.getAll()
       .subscribe(products => {
         this.filteredProducts = this.products = products;
         this.changePage(1);
@@ -117,5 +117,4 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  log() { console.log("sadfas"); }
 }

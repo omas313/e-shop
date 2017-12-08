@@ -8,7 +8,7 @@ export class ProductService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  getProducts() {
+  getAll() {
     return this.db.list("/products").snapshotChanges()
       .map(products => {
         return products.map(p => ({ key: p.key, ...p.payload.val() }));
@@ -29,8 +29,7 @@ export class ProductService {
   }
 
   delete(id: string) {
-    // return this.db.object("/products/" + id).remove();
-    console.log("deleting: " + id);
+    return this.db.object("/products/" + id).remove();
   }
 
 }

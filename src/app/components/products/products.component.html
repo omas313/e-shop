@@ -1,3 +1,49 @@
-<p>
-  products works!
-</p>
+<div class="row">
+    
+  <!-- button filters -->
+  <div class="col-3">
+    <div class="btn-group-vertical" role="group">
+      <button type="button" 
+        class="btn" 
+        [class.highlighed]="!currentCategory"
+        routerLink="/"
+      >
+        All categories
+      </button>
+      <button type="button" 
+        class="btn"
+        [class.highlighed]="currentCategory === c.key"
+        *ngFor="let c of categories$ | async"
+        routerLink="/"
+        [queryParams]="{ category: c.key}"
+      >
+        {{ c.name }}
+      </button>
+    </div>
+  </div>
+
+  <!-- products -->
+  <div class="col">
+
+    <div class="row" *ngIf="filteredProducts && filteredProducts.length > 0">
+      <ng-container *ngFor="let p of filteredProducts; let i=index">
+        
+        <!-- card -->
+        <div class="col">
+          <div class="card">
+            <img class="card-img-top" [src]="p.imageUrl" [alt]="p.title + ': Image Missing'">
+            <div class="card-body">
+              <h4 class="card-title">{{ p.title }}</h4>
+              <p class="card-text">{{ p.price | currency:'USD':'symbol':'.2-2'}}</p>
+            </div>
+            <button class="btn btn-primary btn-block">Add to Cart</button>
+          </div>
+        </div>
+        <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+
+      </ng-container>
+    </div>
+    
+  </div> <!-- products end -->
+
+</div>

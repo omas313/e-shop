@@ -14,7 +14,10 @@ import { AdminProductFormComponent } from './components/admin/admin-product-form
 
 export const routes = [
   {
-    path: '', redirectTo: 'home', pathMatch: 'full'
+    path: '', redirectTo: 'products', pathMatch: 'full'
+  },
+  {
+    path: 'products', component: ProductsComponent, pathMatch: 'full'
   },
   {
     path: 'home', component: HomeComponent, pathMatch: 'full'

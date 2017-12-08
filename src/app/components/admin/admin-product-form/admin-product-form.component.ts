@@ -37,7 +37,7 @@ export class AdminProductFormComponent implements OnInit {
   ) { 
     
     // get categories observable from db
-    this.categories$ = this.categoryService.getCategories();
+    this.categories$ = this.categoryService.getAll();
     
     // check params to see if we are editing
     this.id = this.activatedRoute.snapshot.paramMap.get("id");
