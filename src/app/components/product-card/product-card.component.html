@@ -1,0 +1,19 @@
+
+<div class="card" *ngIf="product">
+  <img 
+    class="card-img-top" 
+    [src]="product.imageUrl" 
+    [alt]="product.title + ': Image Missing'"
+  >
+  <div class="card-body">
+    <h4 class="card-title">
+      {{ product.title }}
+    </h4>
+    <p class="card-text">
+      {{ product.price | currency:'USD':'symbol':'.2-2'}}
+    </p>
+  </div>
+  <ng-container *ngIf="showActions">
+    <button class="btn btn-primary btn-block">Add to Cart</button>
+  </ng-container>
+</div>

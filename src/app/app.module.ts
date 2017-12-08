@@ -30,6 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminProductFormComponent } from './components/admin/admin-product-form/admin-product-form.component';
 import { CategoryService } from './services/category.service';
 import { ProductService } from './services/product.service';
+import { ProductFilterComponent } from './components/product-filter/product-filter.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ProductService } from './services/product.service';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    AdminProductFormComponent
+    AdminProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

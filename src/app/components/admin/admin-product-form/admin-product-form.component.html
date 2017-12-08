@@ -71,14 +71,7 @@
 
   <!-- product display -->
   <div class="col">
-    <div class="card" *ngIf="product.title">
-      <img class="card-img-top" [src]="product.imageUrl" *ngIf="product.imageUrl">
-      <div class="card-body">
-        <h4 class="card-title">{{ product.title }}</h4>
-        <h6 class="text-muted">{{ product.category }}</h6>
-        <p class="card-text">{{ product.price | currency:'USD':'symbol':'.2-2'}}</p>
-      </div>
-    </div>
+    <app-product-card [product]="product"></app-product-card>
   </div>
 
 </div>

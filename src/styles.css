@@ -13,6 +13,10 @@ body {
   background-size: cover;
 }
 
+.container {
+  padding-top: 80px;
+}
+
 nav, 
 .dropdown-menu {
   background: #4d648d;

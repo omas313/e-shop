@@ -1,0 +1,10 @@
+
+.card {
+  margin-bottom: 10px;
+}
+
+.card button {
+  background-color: #fa812f;
+  border-color: #fa812f;
+  cursor: pointer;
+}

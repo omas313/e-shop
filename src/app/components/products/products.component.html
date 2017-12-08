@@ -2,24 +2,8 @@
     
   <!-- button filters -->
   <div class="col-3">
-    <div class="btn-group-vertical" role="group">
-      <button type="button" 
-        class="btn" 
-        [class.highlighed]="!currentCategory"
-        routerLink="/"
-      >
-        All categories
-      </button>
-      <button type="button" 
-        class="btn"
-        [class.highlighed]="currentCategory === c.key"
-        *ngFor="let c of categories$ | async"
-        routerLink="/"
-        [queryParams]="{ category: c.key}"
-      >
-        {{ c.name }}
-      </button>
-    </div>
+    <app-product-filter [category]="category">
+    </app-product-filter>
   </div>
 
   <!-- products -->
@@ -30,14 +14,11 @@
         
         <!-- card -->
         <div class="col">
-          <div class="card">
-            <img class="card-img-top" [src]="p.imageUrl" [alt]="p.title + ': Image Missing'">
-            <div class="card-body">
-              <h4 class="card-title">{{ p.title }}</h4>
-              <p class="card-text">{{ p.price | currency:'USD':'symbol':'.2-2'}}</p>
-            </div>
-            <button class="btn btn-primary btn-block">Add to Cart</button>
-          </div>
+          <app-product-card 
+            [product]="p"
+            [showActions]="true"
+          >
+          </app-product-card>
         </div>
         <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
 
