@@ -33,4 +33,28 @@ nav li {
   color: #d0e1f9;
 }
 
+.text-center {
+  text-align: center;
+}
 
+.grid-h-center {
+  display: grid;
+  justify-content: center;
+}
+
+.bg-orange {
+  background-color: #fa812f;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 991px) {
+  .container {
+      margin-left: 0px;
+      margin-right: 0px;
+      width: 100%;
+      max-width: none;
+  }
+}

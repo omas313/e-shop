@@ -32,6 +32,8 @@ import { CategoryService } from './services/category.service';
 import { ProductService } from './services/product.service';
 import { ProductFilterComponent } from './components/product-filter/product-filter.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { QuantityChangerComponent } from './components/quantity-changer/quantity-changer.component';
+import { ShoppingCartService } from './services/shopping-cart.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     LoginComponent,
     AdminProductFormComponent,
     ProductFilterComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    QuantityChangerComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -70,6 +73,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     AdminGuard,
     AuthGuard,
     CategoryService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })

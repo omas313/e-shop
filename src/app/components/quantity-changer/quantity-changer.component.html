@@ -1,0 +1,20 @@
+
+<div class="grid-cols-131" *ngIf="shoppingCart">
+  <button 
+    class="btn btn-default bg-orange justify-self-left" 
+    (click)="removeFromCart()"
+  >
+    -
+  </button>
+  <div class="quantity">
+    <div>
+      <strong>{{ shoppingCart.getQuantityOf(product) }}</strong><span *ngIf="description"> in cart</span>
+    </div>
+  </div>
+  <button 
+    class="btn btn-default bg-orange justify-self-right" 
+    (click)="addToCart()"
+  >
+    +
+  </button>
+</div>

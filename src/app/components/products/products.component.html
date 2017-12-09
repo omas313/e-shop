@@ -1,22 +1,24 @@
 <div class="row">
     
   <!-- button filters -->
-  <div class="col-3">
+  <div class="col-md-3 col-xs-12 mb-30">
     <app-product-filter [category]="category">
     </app-product-filter>
   </div>
 
   <!-- products -->
-  <div class="col">
+  <div class="col p-container">
 
-    <div class="row" *ngIf="filteredProducts && filteredProducts.length > 0">
+    <div class="row" *ngIf="filteredProducts && filteredProducts.length > 0 && cart$ | async as cart">
       <ng-container *ngFor="let p of filteredProducts; let i=index">
         
         <!-- card -->
         <div class="col">
+          <!-- dont unwrap cart here in the loop -->
           <app-product-card 
             [product]="p"
             [showActions]="true"
+            [shoppingCart]="cart" 
           >
           </app-product-card>
         </div>

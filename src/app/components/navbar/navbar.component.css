@@ -14,3 +14,13 @@ li[dropdown] {
 .mb-40 {
   margin-bottom: 40px;
 }
+
+.badge {
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 30%;
+}
+
+.badge-orange {
+  background-color: #fa812f;
+}

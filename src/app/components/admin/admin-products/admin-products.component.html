@@ -23,7 +23,7 @@
       <th></th>
     </tr>
   </thead>
-  <thead *ngIf="filteredProducts && filteredProducts.length > 0">
+  <tbody *ngIf="filteredProducts && filteredProducts.length > 0">
     <tr *ngFor="let i of paginatedIndices; let t = index">
       <td>{{ t + 1 + (currentPage - 1 ) * pageLimit}}</td>
       <td>{{ filteredProducts[i].title }}</td>
@@ -32,16 +32,7 @@
         <a [routerLink]="['/admin/products/', filteredProducts[i].key]">Edit</a>
       </td>
     </tr>
-  </thead>
-  <!-- <thead *ngIf="filteredProducts && filteredProducts.length > 0">
-    <tr *ngFor="let p of filteredProducts">
-      <td>{{ p.title }}</td>
-      <td>{{ p.price | currency:'USD':'symbol':'.2-2' }}</td>
-      <td>
-        <a [routerLink]="['/admin/products/', p.key]">Edit</a>
-      </td>
-    </tr>
-  </thead> -->
+  </tbody>
 </table>
 
 <!-- Table info -->

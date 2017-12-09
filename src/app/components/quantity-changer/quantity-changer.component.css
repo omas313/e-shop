@@ -1,0 +1,32 @@
+
+.grid-cols-131 {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  align-content: center;
+  justify-content: center;
+}
+
+.quantity {
+  display: grid;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  text-align: center;
+  background-color: #feffff;  
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  color: white;
+  cursor: pointer;
+  width: 50px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.justify-self-right {
+  justify-self: right;
+}
+.justify-self-left {
+  justify-self: left;
+}

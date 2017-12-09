@@ -6,14 +6,27 @@
     [alt]="product.title + ': Image Missing'"
   >
   <div class="card-body">
-    <h4 class="card-title">
-      {{ product.title }}
-    </h4>
+    <h4 class="card-title">{{ product.title }}</h4>
     <p class="card-text">
       {{ product.price | currency:'USD':'symbol':'.2-2'}}
     </p>
   </div>
-  <ng-container *ngIf="showActions">
-    <button class="btn btn-primary btn-block">Add to Cart</button>
+  <!-- action buttons -->
+  <ng-container *ngIf="showActions && shoppingCart">
+    <button 
+      *ngIf="shoppingCart.getQuantityOf(product) === 0; else changer"
+      class="btn btn-primary btn-block" 
+      (click)="addToCart()"
+    >
+      Add to Cart
+    </button>
+    <ng-template #changer>
+      <app-quantity-changer
+        [description]="true" 
+        [product]="product"
+        [shoppingCart]="shoppingCart">
+      </app-quantity-changer>
+    </ng-template>
   </ng-container>
+
 </div>

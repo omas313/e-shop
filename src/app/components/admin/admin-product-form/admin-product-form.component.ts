@@ -19,7 +19,7 @@ export class AdminProductFormComponent implements OnInit {
   form: FormGroup;
   
   id: string;
-  product: Product = {
+  product = {
     title: '',
     imageUrl: '',
     price: 0, 

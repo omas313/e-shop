@@ -20,11 +20,11 @@ export class ProductService {
       .map(p => ({ key: p.key, ...p.payload.val() }));
   }
 
-  create(product: Product) {
+  create(product) {
     return this.db.list("/products").push(product);
   }
 
-  update(id: string, product: Product) {
+  update(id: string, product) {
     return this.db.object("/products/" + id).update(product);
   }
 

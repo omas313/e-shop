@@ -21,3 +21,18 @@ button.highlighed {
   color: #283655;
   font-weight: bold;
 }
+
+@media screen and (max-width: 767px) {
+
+  .sticky-top{
+    text-align: center;
+    position: fixed;
+    width: 100%;  
+  }
+
+  .btn-group-vertical {
+    flex-direction: row;
+    -webkit-box-orient: horizontal;
+  }
+
+}
