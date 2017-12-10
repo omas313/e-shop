@@ -3,6 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { AppUser } from '../models/app-user';
 import { Observable } from 'rxjs/Observable';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class UsersService {
@@ -19,6 +20,10 @@ export class UsersService {
       name: user.displayName,
       email: user.email
     });
+  }
+
+  addOrderId(userId: string, orderId: string) {
+    return this.db.list(`/users/${userId}/orders`).push(orderId);
   }
 
 }

@@ -1,0 +1,14 @@
+
+.card {
+  max-width: 650px;
+}
+
+.shipping {
+  text-align: right;
+}
+
+@media screen and (max-width: 575px) {
+  .shipping {
+    text-align: left;
+  }
+}  

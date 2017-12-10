@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
 import { AdminProductFormComponent } from './components/admin/admin-product-form/admin-product-form.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 
 export const routes = [
   {
@@ -48,8 +49,14 @@ export const routes = [
     pathMatch: 'full'
   },
   {
-    path: 'order-successful', 
+    path: 'order-successful/:id', 
     component: OrderSuccessfulComponent, 
+    canActivate: [AuthGuard],        
+    pathMatch: 'full'
+  },
+  {
+    path: 'order-detail/:id', 
+    component: OrderDetailComponent, 
     canActivate: [AuthGuard],        
     pathMatch: 'full'
   },

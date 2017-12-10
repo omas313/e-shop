@@ -3,6 +3,7 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 
 body {
+  font-family: Tahoma, sans-serif;
   background: #d0e1f9;
   background: -moz-linear-gradient(-45deg, #fdffff 0%, #d0e1f9 100%);
   background: -webkit-linear-gradient(-45deg, #fdffff 0%,#d0e1f9 100%);
@@ -11,10 +12,12 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  font-size: 18px;
 }
 
 .container {
-  padding-top: 80px;
+  padding-top: 100px;
+  padding-bottom: 80px;
 }
 
 nav, 
@@ -33,8 +36,13 @@ nav li {
   color: #d0e1f9;
 }
 
-.text-center {
-  text-align: center;
+.bg-orange {
+  background-color: #fa812f;
+}
+
+button.bg-orange:hover {
+  background-color: #d25703;
+  cursor: pointer;
 }
 
 .grid-h-center {
@@ -42,12 +50,28 @@ nav li {
   justify-content: center;
 }
 
-.bg-orange {
-  background-color: #fa812f;
+.w-150 {
+  width: 150px;
+}
+
+.w-200 {
+  width: 200px;
+}
+
+.w-250 {
+  width: 250px;
 }
 
 .mb-30 {
   margin-bottom: 30px;
+}
+
+.p-r-0 {
+  padding-right: 0;
+}
+
+.l-s-1 {
+  letter-spacing: 1px;
 }
 
 @media screen and (max-width: 991px) {

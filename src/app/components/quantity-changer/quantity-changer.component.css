@@ -1,9 +1,10 @@
 
-.grid-cols-131 {
+.grid-cols-1x1 {
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 6fr 1fr;
   align-content: center;
   justify-content: center;
+  margin: 0 auto;
 }
 
 .quantity {
@@ -20,10 +21,16 @@
 button {
   color: white;
   cursor: pointer;
-  width: 50px;
+  width: 100%;
   font-size: 20px;
   font-weight: bold;
+  background-color: #7792be;
 }
+
+button:hover {
+  background-color: #49648c;
+}
+
 .justify-self-right {
   justify-self: right;
 }

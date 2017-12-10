@@ -1,18 +1,18 @@
 
-<div class="grid-cols-131" *ngIf="shoppingCart">
+<div class="grid-cols-1x1" *ngIf="shoppingCart">
   <button 
-    class="btn btn-default bg-orange justify-self-left" 
+    class="btn btn-default justify-self-left" 
     (click)="removeFromCart()"
   >
     -
   </button>
   <div class="quantity">
     <div>
-      <strong>{{ shoppingCart.getQuantityOf(product) }}</strong><span *ngIf="description"> in cart</span>
+      {{ shoppingCart.getQuantityOf(product) }} <span *ngIf="description">in cart</span>
     </div>
   </div>
   <button 
-    class="btn btn-default bg-orange justify-self-right" 
+    class="btn btn-default justify-self-right" 
     (click)="addToCart()"
   >
     +

@@ -24,15 +24,15 @@ button.highlighed {
 
 @media screen and (max-width: 767px) {
 
-  .sticky-top{
+  .sticky-top {
     text-align: center;
-    position: fixed;
-    width: 100%;  
+    position: inherit;
+    max-width: 100%;  
   }
 
-  .btn-group-vertical {
-    flex-direction: row;
-    -webkit-box-orient: horizontal;
+  .sticky-top button{
+    text-align: center;
   }
+
 
 }

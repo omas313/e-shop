@@ -1,3 +1,4 @@
+import { OrderService } from './services/order.service';
 import { AdminGuard } from './guards/admin.guard';
 import { UsersService } from './services/users.service';
 import { AuthService } from './services/auth.service';
@@ -34,6 +35,9 @@ import { ProductFilterComponent } from './components/product-filter/product-filt
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { QuantityChangerComponent } from './components/quantity-changer/quantity-changer.component';
 import { ShoppingCartService } from './services/shopping-cart.service';
+import { ShippingFormComponent } from './components/shipping-form/shipping-form.component';
+import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +56,10 @@ import { ShoppingCartService } from './services/shopping-cart.service';
     AdminProductFormComponent,
     ProductFilterComponent,
     ProductCardComponent,
-    QuantityChangerComponent
+    QuantityChangerComponent,
+    ShippingFormComponent,
+    ShoppingCartSummaryComponent,
+    OrderDetailComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -73,6 +80,7 @@ import { ShoppingCartService } from './services/shopping-cart.service';
     AdminGuard,
     AuthGuard,
     CategoryService,
+    OrderService,
     ShoppingCartService
   ],
   bootstrap: [AppComponent]

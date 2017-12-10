@@ -1,0 +1,24 @@
+
+<div class="card" *ngIf="cart">
+  <div class="card-body">
+    <h4 class="card-title">Order Summary</h4>
+    <p class="card-text">You have <strong>{{ cart.totalItemsCount }}</strong> items in your shopping cart.</p>
+    <table class="table">
+      <tbody>
+        <!-- looping here -->
+        <tr *ngFor="let item of cart.items">
+          <td>{{ item.quantity }} x {{ item.title }}</td>
+          <td class="text-right">{{ item.totalPrice | currency:'USD':'symbol':'.2-2' }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td class="text-right">
+            <strong>{{ cart.totalPrice | currency:'USD':'symbol':'.2-2' }}</strong>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

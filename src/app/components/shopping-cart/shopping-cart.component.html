@@ -1,5 +1,5 @@
 
-<h1>Shopping Cart</h1>
+<h1 class="mb-30">Shopping Cart</h1>
 
 <ng-container *ngIf="cart$ | async as cart">
   
@@ -12,23 +12,25 @@
         <th></th> <!-- Image -->
         <th>Product</th> 
         <th class="text-center">Quantity</th> 
-        <th>Price</th> 
+        <th class="text-center">Price</th> 
       </tr>
     </thead>
     <!-- body -->
     <tbody>
       <tr *ngFor="let item of cart.items">
-        <td><div [style.backgroundImage]="'url(' + item.imageUrl + ')'" class="thumbnail"></div></td>
-        <td>
+        <td class="w-150">
+          <div [style.backgroundImage]="'url(' + item.imageUrl + ')'" class="thumbnail"></div>
+        </td>
+        <td class="w-250">
           {{ item.title }}
         </td>
-        <td class="grid-h-center">
+        <td class="w-200">
           <app-quantity-changer 
             [product]="item"
             [shoppingCart]="cart">
           </app-quantity-changer>
         </td>
-        <td>
+        <td class="w-150 text-center l-s-1">
           {{ item.totalPrice | currency:'USD':'symbol':'.2-2'}}
         </td>
       </tr>
@@ -39,8 +41,8 @@
         <th></th>
         <th></th>
         <th></th>
-        <th>
-          <strong class="bigger">
+        <th class="text-center">
+          <strong class="bigger l-s-1">
             {{ cart.totalPrice | currency:'USD':'symbol':'.2-2' }}
           </strong>
         </th>
@@ -48,9 +50,19 @@
     </tfoot>
   </table>
   
-  <button class="btn btn-danger btn-sm" (click)="clearCart()">
-    Clear Shopping Cart
-  </button>
+  <div class="row buttons" *ngIf="cart.totalItemsCount">
+    <div class="col-3">
+      <button class="btn btn-light" (click)="clearCart()">
+        Clear Shopping Cart
+      </button>
+    </div>
+    <div class="col"></div>
+    <div class="col-3 text-right p-r-0">
+      <button class="btn btn-secondary btn-checkout bg-orange" routerLink="/checkout">
+        Checkout
+      </button>
+    </div>
+  </div>
 
 </ng-container>
 
