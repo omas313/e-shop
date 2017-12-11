@@ -2,18 +2,20 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CustomFormsModule } from 'ng2-validation';
+import { AuthGuard } from 'shared/services/auth.guard';
 import { SharedModule } from 'shared/shared.module';
 
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 import { AdminProductFormComponent } from './components/admin-product-form/admin-product-form.component';
 import { AdminProductsComponent } from './components/admin-products/admin-products.component';
 import { AdminGuard } from './services/admin.guard';
-import { AuthGuard } from 'shared/services/auth.guard';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    CustomFormsModule,    
     ReactiveFormsModule,
     SharedModule,    
     RouterModule.forChild([
