@@ -1,0 +1,13 @@
+
+a {
+  color: #fa812f;
+}
+
+a:hover {
+  color: #ee7a2c;
+  text-decoration: none;
+}
+
+p {
+  font-size: 20px;
+}
