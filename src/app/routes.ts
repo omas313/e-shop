@@ -1,17 +1,13 @@
-import { AuthGuard } from './shared/services/auth.guard';
-import { AdminGuard } from './guards/admin.guard';
-import { MyOrdersComponent } from './components/my-orders/my-orders.component';
-import { AdminProductsComponent } from './components/admin/admin-products/admin-products.component';
-import { OrderSuccessfulComponent } from './components/order-successful/order-successful.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-import { ProductsComponent } from './components/products/products.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
-import { AdminProductFormComponent } from './components/admin/admin-product-form/admin-product-form.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { OrderSuccessfulComponent } from './components/order-successful/order-successful.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { AuthGuard } from './shared/services/auth.guard';
 
 export const routes = [
   {
@@ -58,32 +54,6 @@ export const routes = [
     path: 'order-detail/:id', 
     component: OrderDetailComponent, 
     canActivate: [AuthGuard],        
-    pathMatch: 'full'
-  },
-
-  // admin routes
-  {
-    path: 'admin/products', 
-    component: AdminProductsComponent, 
-    canActivate: [AuthGuard, AdminGuard],
-    pathMatch: 'full'
-  },
-  {
-    path: 'admin/products/new', 
-    component: AdminProductFormComponent, 
-    canActivate: [AuthGuard, AdminGuard],
-    pathMatch: 'full'
-  },
-  {
-    path: 'admin/products/:id', 
-    component: AdminProductFormComponent, 
-    canActivate: [AuthGuard, AdminGuard],
-    pathMatch: 'full'
-  },
-  {
-    path: 'admin/orders', 
-    component: AdminOrdersComponent, 
-    canActivate: [AuthGuard, AdminGuard],
     pathMatch: 'full'
   },
 

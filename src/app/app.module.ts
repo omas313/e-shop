@@ -11,9 +11,6 @@ import { SharedModule } from 'shared/shared.module';
 
 import { environment } from './../environments/environment';
 import { AppComponent } from './app.component';
-import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
-import { AdminProductFormComponent } from './components/admin/admin-product-form/admin-product-form.component';
-import { AdminProductsComponent } from './components/admin/admin-products/admin-products.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -27,8 +24,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { ShippingFormComponent } from './components/shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { AdminGuard } from './guards/admin.guard';
 import { routes } from './routes';
+import { AdminModule } from 'app/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -41,10 +38,7 @@ import { routes } from './routes';
     CheckoutComponent,
     OrderSuccessfulComponent,
     MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
     LoginComponent,
-    AdminProductFormComponent,
     ProductFilterComponent,
     ShippingFormComponent,
     ShoppingCartSummaryComponent,
@@ -61,10 +55,8 @@ import { routes } from './routes';
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
-    SharedModule
-  ],
-  providers: [
-    AdminGuard    
+    AdminModule,
+    SharedModule,
   ],
   bootstrap: [AppComponent]
 })
