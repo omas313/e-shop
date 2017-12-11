@@ -1,9 +1,9 @@
-import { Product } from './../../../models/product';
+import { Product } from '../../../shared/models/product';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { ProductService } from '../../../services/product.service';
+import { ProductService } from '../../../shared/services/product.service';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({

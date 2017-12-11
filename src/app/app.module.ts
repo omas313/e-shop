@@ -1,43 +1,34 @@
-import { OrderService } from './services/order.service';
-import { AdminGuard } from './guards/admin.guard';
-import { UsersService } from './services/users.service';
-import { AuthService } from './services/auth.service';
-import { environment } from './../environments/environment';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from "angularfire2";
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { RouterModule } from '@angular/router';
-import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
-import { CustomFormsModule } from 'ng2-validation';
-
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-
-import { routes } from './routes';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { ProductsComponent } from './components/products/products.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
-import { OrderSuccessfulComponent } from './components/order-successful/order-successful.component';
-import { MyOrdersComponent } from './components/my-orders/my-orders.component';
-import { AdminProductsComponent } from './components/admin/admin-products/admin-products.component';
-import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
-import { LoginComponent } from './components/login/login.component';
-import { AuthGuard } from './guards/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { CustomFormsModule } from 'ng2-validation';
+import { BsDropdownModule, CollapseModule } from 'ngx-bootstrap';
+import { SharedModule } from 'shared/shared.module';
+
+import { environment } from './../environments/environment';
+import { AppComponent } from './app.component';
+import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
 import { AdminProductFormComponent } from './components/admin/admin-product-form/admin-product-form.component';
-import { CategoryService } from './services/category.service';
-import { ProductService } from './services/product.service';
+import { AdminProductsComponent } from './components/admin/admin-products/admin-products.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { OrderSuccessfulComponent } from './components/order-successful/order-successful.component';
 import { ProductFilterComponent } from './components/product-filter/product-filter.component';
-import { ProductCardComponent } from './components/product-card/product-card.component';
-import { QuantityChangerComponent } from './components/quantity-changer/quantity-changer.component';
-import { ShoppingCartService } from './services/shopping-cart.service';
+import { ProductsComponent } from './components/products/products.component';
 import { ShippingFormComponent } from './components/shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
-import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { AdminGuard } from './guards/admin.guard';
+import { routes } from './routes';
 
 @NgModule({
   declarations: [
@@ -55,8 +46,6 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
     LoginComponent,
     AdminProductFormComponent,
     ProductFilterComponent,
-    ProductCardComponent,
-    QuantityChangerComponent,
     ShippingFormComponent,
     ShoppingCartSummaryComponent,
     OrderDetailComponent
@@ -72,16 +61,10 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
+    SharedModule
   ],
   providers: [
-    AuthService,
-    UsersService,
-    ProductService,
-    AdminGuard,
-    AuthGuard,
-    CategoryService,
-    OrderService,
-    ShoppingCartService
+    AdminGuard    
   ],
   bootstrap: [AppComponent]
 })

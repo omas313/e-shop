@@ -1,7 +1,7 @@
-import { ProductService } from '../../../services/product.service';
-import { Category } from './../../../models/category';
-import { Product } from '../../../models/product';
-import { CategoryService } from '../../../services/category.service';
+import { ProductService } from '../../../shared/services/product.service';
+import { Category } from '../../../shared/models/category';
+import { Product } from '../../../shared/models/product';
+import { CategoryService } from '../../../shared/services/category.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
