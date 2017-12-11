@@ -24,3 +24,7 @@ li[dropdown] {
 .badge-orange {
   background-color: #fa812f;
 }
+
+.navbar-brand:hover {
+  color: #d0e2fa;
+}

@@ -1,71 +1,80 @@
 <nav class="navbar navbar-expand-sm mb-40 fixed-top">
-  <a class="navbar-brand" [routerLink]="['/home']">ES</a>
-  <button (click)="toggleCollapse()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="container">
 
-  <div class="collapse navbar-collapse" [collapse]="isCollapsed">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item" routerLinkActive="shopping-cart">
-        <a class="nav-link" [routerLink]="['/shopping-cart']">
-          Shopping Cart 
-          <span 
-            class="badge badge-orange" 
-            *ngIf="cart$ | async as cart"
-            [ngClass]="getCartBadgeColor(cart.totalItemsCount)"
-          >
-            {{ cart.totalItemsCount }}
-          </span>
-        </a>
-      </li>
+    <a class="navbar-brand" [routerLink]="['/home']">
+      E
+      <i class="fa fa-leaf"></i>
+    </a>
+    <button (click)="toggleCollapse()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <!-- TODO: remove this later -->
-      <li class="nav-item" routerLinkActive="products">
-        <a class="nav-link" [routerLink]="['/products']">
-          Products
-        </a>
-      </li>
-      
-      <!-- Logged in or not  -->
-      <li class="nav-item" dropdown *ngIf="appUser; else notlogged">
-        <a class="nav-link dropdown-toggle" dropdownToggle>
-          {{ appUser.name }}
-        </a>
-        <ul *dropdownMenu class="dropdown-menu left-auto">
-          <li class="nav-item" routerLinkActive="my-orders">
-            <a class="nav-link" [routerLink]="['/my-orders']">
-              My Orders
-            </a>
-          </li>
-           <!-- admin links -->
-          <ng-container *ngIf="appUser.isAdmin">
-            <li class="nav-item" routerLinkActive="admin/orders">
-              <a class="nav-link" [routerLink]="['/admin/orders']">
-                Manage Orders
-              </a>
-            </li>
-            <li class="nav-item" routerLinkActive="admin/products">
-              <a class="nav-link" [routerLink]="['/admin/products']">
-                Manage Products
-              </a>
-            </li>
-          </ng-container>
-          <li class="nav-item" (click)="logout()">
-            <a class="nav-link">
-              Log Out
-            </a>
-          </li>
-        </ul>
-      </li>
-      <ng-template #notlogged>
-        <li class="nav-item" routerLinkActive="login">
-          <a class="nav-link" [routerLink]="['/login']">
-            Log In
+    <div class="collapse navbar-collapse" [collapse]="isCollapsed">
+
+      <!-- left list -->
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+        <!-- products -->
+        <li class="nav-item" routerLinkActive="products">
+          <a class="nav-link" [routerLink]="['/products']">
+            Products
           </a>
         </li>
-      </ng-template>
 
-    </ul>
+        <!-- shopping cart -->
+        <li class="nav-item" routerLinkActive="shopping-cart">
+          <a class="nav-link" [routerLink]="['/shopping-cart']">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="badge badge-orange" *ngIf="cart$ | async as cart" [ngClass]="getCartBadgeColor(cart.totalItemsCount)">
+              {{ cart.totalItemsCount }}
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- right list -->
+      <ul class="navbar-nav mt-2 mt-lg-0">
+        <!-- Logged in or not  -->
+        <li class="nav-item" dropdown *ngIf="appUser; else notlogged">
+          <a class="nav-link dropdown-toggle" dropdownToggle>
+            {{ appUser.name }}
+          </a>
+          <ul *dropdownMenu class="dropdown-menu left-auto">
+            <li class="nav-item" routerLinkActive="my-orders">
+              <a class="nav-link" [routerLink]="['/my-orders']">
+                My Orders
+              </a>
+            </li>
+            <!-- admin links -->
+            <ng-container *ngIf="appUser.isAdmin">
+              <li class="nav-item" routerLinkActive="admin/orders">
+                <a class="nav-link" [routerLink]="['/admin/orders']">
+                  Manage Orders
+                </a>
+              </li>
+              <li class="nav-item" routerLinkActive="admin/products">
+                <a class="nav-link" [routerLink]="['/admin/products']">
+                  Manage Products
+                </a>
+              </li>
+            </ng-container>
+            <li class="nav-item" (click)="logout()">
+              <a class="nav-link">
+                Log Out
+              </a>
+            </li>
+          </ul>
+        </li>
+        <ng-template #notlogged>
+          <li class="nav-item" routerLinkActive="login">
+            <a class="nav-link" [routerLink]="['/login']">
+              Log In
+            </a>
+          </li>
+        </ng-template>
+      </ul>
+
+    </div>
   </div>
 </nav>
