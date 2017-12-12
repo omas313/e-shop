@@ -19,7 +19,8 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   clearCart() {
-    this.cartService.clearCart();
+    if (confirm("Are you sure you want to delete all items in the cart?"))
+      this.cartService.clearCart();
   }
 
 }

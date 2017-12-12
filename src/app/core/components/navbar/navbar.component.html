@@ -26,7 +26,7 @@
         <li class="nav-item" routerLinkActive="shopping-cart">
           <a class="nav-link" [routerLink]="['/shopping-cart']">
             <i class="fa fa-shopping-cart"></i>
-            <span class="badge badge-orange" *ngIf="cart$ | async as cart" [ngClass]="getCartBadgeColor(cart.totalItemsCount)">
+            <span class="badge bg-orange" *ngIf="cart$ | async as cart" [ngClass]="getCartBadgeColor(cart.totalItemsCount)">
               {{ cart.totalItemsCount }}
             </span>
           </a>

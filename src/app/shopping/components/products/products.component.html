@@ -1,32 +1,35 @@
-<div class="row pt-100">
-    
-  <!-- button filters -->
-  <div class="col-md-3 col-xs-12 mb-30">
-    <app-product-filter [category]="category">
-    </app-product-filter>
-  </div>
 
-  <!-- products -->
-  <div class="col p-container">
-
-    <div class="row" *ngIf="filteredProducts && filteredProducts.length > 0 && cart$ | async as cart">
-      <ng-container *ngFor="let p of filteredProducts; let i=index">
-        
-        <!-- card -->
-        <div class="col-sm-6 col-xs-12">
-          <!-- dont unwrap cart here in the loop -->
-          <app-product-card 
-            [product]="p"
-            [showActions]="true"
-            [shoppingCart]="cart" 
-          >
-          </app-product-card>
-        </div>
-        <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
-
-      </ng-container>
+<div class="content-container">
+  <div class="row">
+      
+    <!-- button filters -->
+    <div class="col-md-3 col-xs-12 mb-30">
+      <app-product-filter [category]="category">
+      </app-product-filter>
     </div>
-    
-  </div> <!-- products end -->
-
+  
+    <!-- products -->
+    <div class="col p-container">
+  
+      <div class="row" *ngIf="filteredProducts && filteredProducts.length > 0 && cart$ | async as cart">
+        <ng-container *ngFor="let p of filteredProducts; let i=index">
+          
+          <!-- card -->
+          <div class="col-sm-6 col-xs-12">
+            <!-- dont unwrap cart here in the loop -->
+            <app-product-card 
+              [product]="p"
+              [showActions]="true"
+              [shoppingCart]="cart" 
+            >
+            </app-product-card>
+          </div>
+          <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+  
+        </ng-container>
+      </div>
+      
+    </div> <!-- products end -->
+  
+  </div>
 </div>

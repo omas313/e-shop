@@ -1,13 +1,17 @@
 
-<h1 class="mb-30">Shipping</h1>
+<div class="content-container">
 
-<div class="row" *ngIf="cart$ | async as cart">
-  <!-- form  -->
-  <div class="col-md-6 col-sm-12">
-    <app-shipping-form [cart]="cart"></app-shipping-form>
+  <h1 class="mb-30">Shipping</h1>
+  
+  <div class="row" *ngIf="cart$ | async as cart">
+    <!-- form  -->
+    <div class="col-md-6 col-sm-12">
+      <app-shipping-form [cart]="cart"></app-shipping-form>
+    </div>
+    <!-- summary -->
+    <div class="col-md-6 col-sm-12">
+      <app-shopping-cart-summary [cart]="cart"></app-shopping-cart-summary>
+    </div>
   </div>
-  <!-- summary -->
-  <div class="col-md-6 col-sm-12">
-    <app-shopping-cart-summary [cart]="cart"></app-shopping-cart-summary>
-  </div>
+
 </div>

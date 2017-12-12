@@ -24,11 +24,6 @@ button {
   width: 100%;
   font-size: 20px;
   font-weight: bold;
-  background-color: #7792be;
-}
-
-button:hover {
-  background-color: #49648c;
 }
 
 .justify-self-right {

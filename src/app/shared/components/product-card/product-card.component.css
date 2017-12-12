@@ -2,14 +2,3 @@
 .card {
   margin-bottom: 30px;
 }
-
-.card button {
-  background-color: #fa812f;
-  border-color: #fa812f;
-  cursor: pointer;
-}
-
-.card button:hover {
-  background-color: #c5611e;
-  border-color: #c5611e;
-}

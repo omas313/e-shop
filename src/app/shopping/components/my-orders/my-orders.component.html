@@ -1,34 +1,40 @@
 
-<h1 class="mb-30">My Orders</h1>
+<div class="content-container">
 
-<ng-container *ngIf="orders$ | async as orders">
-
-  <table class="table" *ngIf="orders.length > 0; else noOrders">
-    <thead>
-      <tr>
-        <th>Customer</th>
-        <th>Date</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- looping here -->
-      <tr *ngFor="let o of orders">
-        <td>
-          {{ o.shipping.name }}
-        </td>
-        <td>
-          {{ getDate(o.datePlaced) }}
-        </td>
-        <td>
-          <a [routerLink]="['/order-detail/', o.key]">View</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <h1 class="mb-30">My Orders</h1>
   
-  <ng-template #noOrders>
-    <h3>No orders</h3>
-  </ng-template>
+  <ng-container *ngIf="orders$ | async as orders">
   
-</ng-container>
+    <table class="table table-custom-striped" 
+      *ngIf="orders.length > 0; else noOrders"
+    >
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th class="text-center">Items</th>
+          <th class="text-center">Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- looping here -->
+        <tr *ngFor="let o of orders">
+          <td>
+            {{ getDate(o.datePlaced) }}
+          </td>
+          <td class="text-center">{{ o.items.length }}</td>
+          <td class="text-center">{{ o.totalPrice | currency:'USD':'symbol':'.2-2' }}</td>
+          <td>
+            <a [routerLink]="['/order-detail/', o.key]">View</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <ng-template #noOrders>
+      <h3>No orders</h3>
+    </ng-template>
+    
+  </ng-container>
+  
+</div>

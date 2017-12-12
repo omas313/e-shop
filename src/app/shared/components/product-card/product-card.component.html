@@ -15,7 +15,7 @@
   <ng-container *ngIf="showActions && shoppingCart">
     <button 
       *ngIf="shoppingCart.getQuantityOf(product) === 0; else changer"
-      class="btn btn-primary btn-block" 
+      class="btn bg-orange btn-block" 
       (click)="addToCart()"
     >
       Add to Cart

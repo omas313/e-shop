@@ -3,25 +3,6 @@
   top: 80px;
 }
 
-button {
-  background-color: #fdffff;
-  color: #1e1f26;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-size: 16px;
-  text-align: left;
-}
-
-button:hover {
-  background-color: #d0e1f9;
-}
-
-button.highlighed {
-  background-color: #d0e1f9;
-  color: #283655;
-  font-weight: bold;
-}
-
 @media screen and (max-width: 767px) {
 
   .sticky-top {
@@ -33,6 +14,5 @@ button.highlighed {
   .sticky-top button{
     text-align: center;
   }
-
 
 }

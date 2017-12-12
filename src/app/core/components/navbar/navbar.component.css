@@ -20,11 +20,3 @@ li[dropdown] {
   padding-right: 8px;
   border-radius: 30%;
 }
-
-.badge-orange {
-  background-color: #fa812f;
-}
-
-.navbar-brand:hover {
-  color: #d0e2fa;
-}

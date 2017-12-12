@@ -1,112 +1,115 @@
 
-<button class="btn btn-primary" (click)="newProduct()">New Product</button>
+<div class="content-container">
 
-<div class="form-group">
-  <input type="text" 
-    placeholder="Search..." 
-    class="form-control"
-    ngModel
-    #search="ngModel"
-    (keyup)="filter(search)">
-</div>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th (click)="sortByTitle()">
-        Title
-      </th>
-      <th (click)="sortByPrice()">
-        Price
-      </th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody *ngIf="filteredProducts && filteredProducts.length > 0">
-    <tr *ngFor="let i of paginatedIndices; let t = index">
-      <td>{{ t + 1 + (currentPage - 1 ) * pageLimit}}</td>
-      <td>{{ filteredProducts[i].title }}</td>
-      <td>{{ filteredProducts[i].price | currency:'USD':'symbol':'.2-2' }}</td>
-      <td>
-        <a [routerLink]="['/admin/products/', filteredProducts[i].key]">Edit</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- Table info -->
-<div class="row full-width m0" *ngIf="filteredProducts && filteredProducts.length > 0">
+  <button class="btn btn-primary mb-30" (click)="newProduct()">New Product</button>
   
-  <!-- 1 - results -->
-  <div class="col-md-3 grid-centered">
-    Results: <strong>{{ (currentPage - 1 ) * pageLimit + 1 }} - {{ (currentPage - 1 ) * pageLimit + paginatedIndices.length }}</strong> / {{ filteredProducts.length }}
+  <div class="form-group">
+    <input type="text" 
+      placeholder="Search..." 
+      class="form-control"
+      ngModel
+      #search="ngModel"
+      (keyup)="filter(search)">
   </div>
-
-  <!-- 2- limit -->
-  <div class="col-md-3">
-    <div class="col-auto">
-      <div class="input-group mb-2 mb-sm-0">
-        <div class="input-group-addon">Limit:</div>
-        <input type="number" 
-          class="form-control"
-          min="1"          
-          [(ngModel)]="pageLimit"
-          (change)="changePage(currentPage)">
-      </div>
+  
+  <table class="table table-custom-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th class="sortable" (click)="sortByTitle()">
+          Title
+        </th>
+        <th class="sortable" (click)="sortByPrice()">
+          Price
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngIf="filteredProducts && filteredProducts.length > 0">
+      <tr *ngFor="let i of paginatedIndices; let t = index">
+        <td>{{ t + 1 + (currentPage - 1 ) * pageLimit}}</td>
+        <td>{{ filteredProducts[i].title }}</td>
+        <td>{{ filteredProducts[i].price | currency:'USD':'symbol':'.2-2' }}</td>
+        <td>
+          <a [routerLink]="['/admin/products/', filteredProducts[i].key]">Edit</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Table info -->
+  <div class="row full-width m0" *ngIf="filteredProducts && filteredProducts.length > 0">
+    
+    <!-- 1 - results -->
+    <div class="col-md-3 grid-centered">
+      Results: <strong>{{ (currentPage - 1 ) * pageLimit + 1 }} - {{ (currentPage - 1 ) * pageLimit + paginatedIndices.length }}</strong> / {{ filteredProducts.length }}
     </div>
-  </div>
-
-  <!-- 3 - page changing -->
-  <div class="col-md-6">
-    <div class="btn-group" role="group">
-      <!-- 3a - back buttons -->
-      <button type="button" 
-        class="btn btn-default"
-        (click)="changePage(1)"
-        [disabled]="currentPage === 1"
-      >
-        &lt;&lt;
-      </button>
-      <button type="button" 
-        class="btn btn-default"
-        (click)="changePage(currentPage-1)"
-        [disabled]="currentPage === 1"
-      >
-        &lt;
-      </button>
-
-      <!-- 3b - page number input -->
+  
+    <!-- 2- limit -->
+    <div class="col-md-3">
       <div class="col-auto">
         <div class="input-group mb-2 mb-sm-0">
-          <input type="number" class="form-control"
-            min="1"
-            [max]="numPages"
-            [(ngModel)]="currentPage"
-            #pageSelect="ngModel"
-            (change)="changePage(pageSelect.value)">
-          <div class="input-group-addon">/ {{ numPages }}</div>
+          <div class="input-group-addon">Limit:</div>
+          <input type="number" 
+            class="form-control"
+            min="1"          
+            [(ngModel)]="pageLimit"
+            (change)="changePage(currentPage)">
         </div>
       </div>
-      
-      <!-- 3c - forward buttons -->
-      <button type="button" 
-        class="btn btn-default" 
-        (click)="changePage(currentPage+1)"
-        [disabled]="currentPage === numPages"
-      >
-        &gt;
-      </button>
-      <button type="button" 
-        class="btn btn-default" 
-        (click)="changePage(numPages)"
-        [disabled]="currentPage === numPages"
-      >
-        &gt;&gt;
-      </button>
-
-    </div> <!-- btn group end-->
-
-  </div> <!-- page changing end -->
-
+    </div>
+  
+    <!-- 3 - page changing -->
+    <div class="col-md-6">
+      <div class="btn-group" role="group">
+        <!-- 3a - back buttons -->
+        <button type="button" 
+          class="btn btn-default"
+          (click)="changePage(1)"
+          [disabled]="currentPage === 1"
+        >
+          &lt;&lt;
+        </button>
+        <button type="button" 
+          class="btn btn-default"
+          (click)="changePage(currentPage-1)"
+          [disabled]="currentPage === 1"
+        >
+          &lt;
+        </button>
+  
+        <!-- 3b - page number input -->
+        <div class="col-auto">
+          <div class="input-group mb-2 mb-sm-0">
+            <input type="number" class="form-control"
+              min="1"
+              [max]="numPages"
+              [(ngModel)]="currentPage"
+              #pageSelect="ngModel"
+              (change)="changePage(pageSelect.value)">
+            <div class="input-group-addon">/ {{ numPages }}</div>
+          </div>
+        </div>
+        
+        <!-- 3c - forward buttons -->
+        <button type="button" 
+          class="btn btn-default" 
+          (click)="changePage(currentPage+1)"
+          [disabled]="currentPage === numPages"
+        >
+          &gt;
+        </button>
+        <button type="button" 
+          class="btn btn-default" 
+          (click)="changePage(numPages)"
+          [disabled]="currentPage === numPages"
+        >
+          &gt;&gt;
+        </button>
+  
+      </div> <!-- btn group end-->
+  
+    </div> <!-- page changing end -->
+  
+  </div>
 </div>
