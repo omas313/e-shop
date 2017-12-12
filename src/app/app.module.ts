@@ -29,7 +29,7 @@ import { AppComponent } from './app.component';
     // and we dont want to import shpping module to core module
     RouterModule.forRoot([
       {
-        path: '', component: ProductsComponent, pathMatch: 'full'
+        path: '', redirectTo: "home", pathMatch: 'full'
       },
       {
         path: 'home', component: HomeComponent, pathMatch: 'full'
