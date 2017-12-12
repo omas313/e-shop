@@ -10,6 +10,7 @@ $custom-black: #1e1f26;
 $light: #feffff;
 $light-hover: #f3f3f3;
 $primary: #d0e1f9;
+$primary-hover: #bdc2c9;
 $dark: #4d648d;
 $dark-hover: #5d7092;
 $accent: #fa812f;
@@ -97,7 +98,7 @@ table.table-custom-striped {
         background: $light;
       }
       &:hover {
-        background: $primary;
+        background: $primary-hover;
       }
 
       td {
