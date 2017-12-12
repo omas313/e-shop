@@ -66,6 +66,24 @@ nav li {
   color: $primary;
 }
 
+.navbar-toggler {
+  color: $light;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+.navbar-toggler-icon {
+  padding: 5px;
+}
+
+ul.dropdown-menu {
+  border: none;
+}
+
+
 //==================================
 // Tables
 //==================================
@@ -225,6 +243,10 @@ a.text-accent:hover {
   padding-top: 100px;
 }
 
+.p-10 {
+  padding: 10px;
+}
+
 //==================================
 // Media queries
 //==================================
@@ -236,4 +258,17 @@ a.text-accent:hover {
       width: 100%;
       max-width: none;
   }
+}
+
+@media screen and (max-width: 500px) {
+  
+  .container {
+    padding-right: 3px;
+    padding-left: 3px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  
 }

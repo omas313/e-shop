@@ -20,3 +20,17 @@ li[dropdown] {
   padding-right: 8px;
   border-radius: 30%;
 }
+
+.mob-display {
+  display: none; 
+}
+
+@media screen and (max-width: 500px) {
+  .mob-display {
+    display: inherit; 
+  }
+  
+  .mob-no-display {
+    display: none; 
+  }
+}

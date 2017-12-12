@@ -40,9 +40,17 @@ export class NavbarComponent implements OnInit {
   getCartBadgeColor(count) {
     return count === 0 ? "badge-secondary" : "badge-orange";
   }
+
+  getChevronDirection() {
+    return this.isCollapsed ? "fa-chevron-down" : "fa-chevron-up";
+  }
   
   toggleCollapse() {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  toggleIfOpen() {
+    if (!this.isCollapsed) this.isCollapsed = true;
   }
 
   logout() {

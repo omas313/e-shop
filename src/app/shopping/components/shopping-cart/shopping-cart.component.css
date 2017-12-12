@@ -38,3 +38,35 @@ table th {
   line-height: 1.5;
   border-radius: 0.3rem;
 }
+
+@media screen and (max-width: 500px) {
+  .container {
+    max-width: 500px;
+    padding: 5px;
+  }
+  
+  .thumbnail {
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    background-size: cover;
+    margin: 0 auto;
+  }
+
+  .bigger {
+    font-size: 16px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  .btn-checkout {
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+    margin-right: 10px;
+  }
+
+}
