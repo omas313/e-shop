@@ -30,7 +30,8 @@ export class AppComponent {
       // check for redirect url
       const returnUrl = localStorage.getItem("returnUrl");
       if (!returnUrl) {
-        this.router.navigate(["/products"]);
+        if (this.router.url === "/login")
+          this.router.navigate(["/products"]);
         return;
       }
       
