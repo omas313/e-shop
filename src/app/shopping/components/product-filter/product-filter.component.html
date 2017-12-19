@@ -4,7 +4,7 @@
     <button type="button" 
       class="btn btn-light" 
       [class.highlighed]="!category"
-      routerLink="/"
+      routerLink="/products"
     >
       All categories
     </button>
@@ -12,7 +12,7 @@
       class="btn btn-light"
       [class.highlighed]="category === c.key"
       *ngFor="let c of categories$ | async"
-      routerLink="/"
+      routerLink="/products"
       [queryParams]="{ category: c.key }"
     >
       {{ c.name }}
