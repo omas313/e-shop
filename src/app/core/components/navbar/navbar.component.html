@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-sm mb-40 fixed-top">
   <div class="container">
 
@@ -56,7 +57,7 @@
           <a class="nav-link dropdown-toggle" dropdownToggle>
             {{ appUser.name }}
           </a>
-          <ul *dropdownMenu class="dropdown-menu left-auto">
+          <ul class="dropdown-menu left-auto" *dropdownMenu>
             <li class="nav-item" routerLinkActive="my-orders" (click)="toggleIfOpen()">
               <a class="nav-link" [routerLink]="['/my-orders']">
                 My Orders

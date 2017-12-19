@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { AuthService } from '../../../shared/services/auth.service';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(
-    private authService: AuthService,
-  ) { }
+  constructor(private authService: AuthService) { }
 
   login() {
     this.authService.login();

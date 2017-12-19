@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { HomeComponent } from './home.component';
 
@@ -22,4 +23,11 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have div with class content-container', () => {
+    const de = fixture.debugElement.query(By.css('div.content-container'));
+
+    expect(de).not.toBeNull();
+  });
+
 });
