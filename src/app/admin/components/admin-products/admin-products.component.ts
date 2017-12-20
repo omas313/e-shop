@@ -1,10 +1,10 @@
-import { Product } from '../../../shared/models/product';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { ProductService } from '../../../shared/services/product.service';
 import { Subscription } from 'rxjs/Subscription';
+
+import { Product } from '../../../shared/models/product';
+import { ProductService } from '../../../shared/services/product.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -34,15 +34,14 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private productService: ProductService
-  ) {
+  ) {}
+  
+  ngOnInit() {
     this.subscription = this.productService.getAll()
       .subscribe(products => {
         this.filteredProducts = this.products = products;
         this.changePage(1);
       });
-  }
-
-  ngOnInit() {
   }
 
   newProduct() {
@@ -87,11 +86,11 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     this.numPages = Math.ceil(this.filteredProducts.length / this.pageLimit);
     
     if (newPage < 1) {
-      console.log("Error: trying to set page < 1. Value obtained: ", newPage);
+      // console.log("Error: trying to set page < 1. Value obtained: ", newPage);
       newPage = 1;
     }
     if (newPage > this.numPages) {
-      console.log("Error: trying to set page > total numPages. Value obtained: ", newPage);
+      // console.log("Error: trying to set page > total numPages. Value obtained: ", newPage);
       newPage = this.numPages;
     }
 
@@ -114,7 +113,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription) this.subscription.unsubscribe();
   }
 
 }

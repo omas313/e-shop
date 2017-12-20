@@ -23,14 +23,16 @@
             {{ getDate(o.datePlaced) }}
           </td>
           <td>
-            <a [routerLink]="['/order-detail/', o.key]">View</a>
+            <a [routerLink]="['/order-detail', o.key]">View</a>
           </td>
         </tr>
       </tbody>
     </table>
   
     <ng-template #noOrders>
-      <h3>No orders</h3>
+      <div id="no-orders">
+        No orders
+      </div>
     </ng-template>
   
   </ng-container>

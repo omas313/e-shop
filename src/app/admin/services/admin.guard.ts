@@ -1,17 +1,14 @@
-import { AuthService } from '../../shared/services/auth.service';
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { UsersService } from '../../shared/services/users.service';
 import 'rxjs/add/operator/map';
+
+import { Injectable } from '@angular/core';
+import { CanActivate } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+
+import { AuthService } from '../../shared/services/auth.service';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
-  constructor(
-    private auth: AuthService,
-    private usersService: UsersService,
-    private router: Router
-  ) {}
+  constructor(private auth: AuthService) {}
 
   canActivate(next, state): Observable<boolean> {
     return this.auth.appUser$.map(appUser => appUser.isAdmin);

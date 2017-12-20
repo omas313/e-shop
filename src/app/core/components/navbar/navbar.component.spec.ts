@@ -180,7 +180,6 @@ describe('NavbarComponent', () => {
   it('should have a dropdownToggle with user\'s name', async(() => {
     const dd = fixture.debugElement.query(By.css('[dropdownToggle]'));
 
-    console.log(dd);
     expect(dd.nativeElement.innerText).toBe("test name");
   }));
 

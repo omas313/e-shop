@@ -1,3 +1,4 @@
+
 <div class="content-container">
   <div class="row">
     <!-- form -->
@@ -46,6 +47,7 @@
           </div>          
         </div>
   
+        <!-- image Url -->
         <div class="form-group">
           <label for="imageUrl">Image Url</label>
           <input class="form-control" id="imageUrl" name="imageUrl" 
@@ -60,9 +62,11 @@
           </div>
         </div>
         
+        <!-- save btn -->
         <button class="btn bg-orange" type="submit" [disabled]="form.invalid">
           Save
         </button>
+        <!-- delete btn -->
         <div class="pull-right">
           <button class="btn btn-danger" type="button" (click)="delete()" *ngIf="id">
             Delete

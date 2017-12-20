@@ -7,6 +7,7 @@
     <input type="text" 
       placeholder="Search..." 
       class="form-control"
+      name="search"
       ngModel
       #search="ngModel"
       (keyup)="filter(search)">
@@ -31,7 +32,7 @@
         <td>{{ filteredProducts[i].title }}</td>
         <td>{{ filteredProducts[i].price | currency:'USD':'symbol':'.2-2' }}</td>
         <td>
-          <a [routerLink]="['/admin/products/', filteredProducts[i].key]">Edit</a>
+          <a [routerLink]="['/admin/products', filteredProducts[i].key]">Edit</a>
         </td>
       </tr>
     </tbody>

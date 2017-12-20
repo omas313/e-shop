@@ -1,13 +1,13 @@
-import { ProductService } from '../../../shared/services/product.service';
-import { Category } from '../../../shared/models/category';
-import { Product } from '../../../shared/models/product';
-import { CategoryService } from '../../../shared/services/category.service';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { CustomValidators } from 'ng2-validation';
 import 'rxjs/add/operator/take';
+
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CustomValidators } from 'ng2-validation';
+import { Observable } from 'rxjs/Observable';
+
+import { CategoryService } from '../../../shared/services/category.service';
+import { ProductService } from '../../../shared/services/product.service';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -34,8 +34,9 @@ export class AdminProductFormComponent implements OnInit {
     private productService: ProductService,
     private router: Router,
     private fb: FormBuilder
-  ) { 
-    
+  ) {}
+
+  ngOnInit() {
     // get categories observable from db
     this.categories$ = this.categoryService.getAll();
     
@@ -45,20 +46,12 @@ export class AdminProductFormComponent implements OnInit {
       this.productService.getProduct(this.id)
         .take(1)
         .subscribe(p => this.product = p);
-  }
 
-  ngOnInit() {
     this.form = this.fb.group({
       title: ['', Validators.required],
-      price: ['', [ 
-        Validators.required, 
-        CustomValidators.min(0)
-      ]],
+      price: ['', [ Validators.required, CustomValidators.min(0) ]],
       category: ['', Validators.required],
-      imageUrl: ['', [
-        Validators.required, 
-        CustomValidators.url
-      ]]
+      imageUrl: ['', [ Validators.required, CustomValidators.url ]]
     });
   }
 
